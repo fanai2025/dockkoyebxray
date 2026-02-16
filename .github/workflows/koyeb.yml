@@ -2,15 +2,13 @@ name: "Build and push images"
 
 on:
   workflow_dispatch:
-
+  
 jobs:
-  Building:
-      runs-on: ubuntu-latest
-      name: "Build V2ray images"
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        DOCKERHUB_REPOSITORY: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO }}:latest
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
       steps:
       - name: Checkout repository
